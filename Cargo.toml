@@ -1,0 +1,45 @@
+[workspace]
+resolver = "2"
+members = [
+    "crates/webrtt-protocol",
+    "crates/webrtt-edge",
+    "crates/webrtt-test",
+]
+
+[workspace.dependencies]
+# async runtime
+tokio        = { version = "1", features = ["full"] }
+tokio-stream = { version = "0.1" }
+futures      = { version = "0.3" }
+
+# websocket
+tokio-tungstenite = { version = "0.21", features = ["native-tls"] }
+tungstenite       = { version = "0.21" }
+
+# serialization
+serde       = { version = "1", features = ["derive"] }
+serde_bytes = { version = "0.11" }
+rmp-serde   = { version = "1" }
+
+# types
+uuid  = { version = "1", features = ["v4", "serde"] }
+bytes = { version = "1" }
+
+# http client (for DeepL, ElevenLabs)
+reqwest = { version = "0.11", features = ["json", "stream"] }
+
+# config
+envy    = { version = "0.4" }
+dotenvy = { version = "0.15" }
+
+# logging
+tracing            = { version = "0.1" }
+tracing-subscriber = { version = "0.3", features = ["env-filter", "json"] }
+
+# errors
+anyhow    = { version = "1" }
+thiserror = { version = "1" }
+
+# utils
+chrono  = { version = "0.4", features = ["serde"] }
+base64  = { version = "0.21" }
